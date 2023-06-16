@@ -534,7 +534,6 @@ func (p *LocalPathProvisioner) createHelperPod(action ActionType, cmd []string, 
 	if o.Node != "" {
 		helperPod.Spec.NodeName = o.Node
 	}
-	privileged := true
 	helperPod.Spec.ServiceAccountName = p.serviceAccountName
 	helperPod.Spec.RestartPolicy = v1.RestartPolicyNever
 	helperPod.Spec.Tolerations = append(helperPod.Spec.Tolerations, lpvTolerations...)
@@ -544,9 +543,6 @@ func (p *LocalPathProvisioner) createHelperPod(action ActionType, cmd []string, 
 	helperPod.Spec.Containers[0].Args = []string{"-p", filepath.Join(parentDir, volumeDir),
 		"-s", strconv.FormatInt(o.SizeInBytes, 10),
 		"-m", string(o.Mode)}
-	helperPod.Spec.Containers[0].SecurityContext = &v1.SecurityContext{
-		Privileged: &privileged,
-	}
 
 	// If it already exists due to some previous errors, the pod will be cleaned up later automatically
 	// https://github.com/rancher/local-path-provisioner/issues/27
