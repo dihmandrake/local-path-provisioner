@@ -8,9 +8,9 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.7.0
 	github.com/urfave/cli v1.19.1
-	k8s.io/api v0.19.1
-	k8s.io/apimachinery v0.19.1
-	k8s.io/client-go v0.19.1
+	k8s.io/api v0.19.6
+	k8s.io/apimachinery v0.19.6
+	k8s.io/client-go v0.19.6
 	k8s.io/klog/v2 v2.3.0
 	sigs.k8s.io/sig-storage-lib-external-provisioner/v8 v8.0.0
 	sigs.k8s.io/yaml v1.2.0
